@@ -19,7 +19,7 @@ class Cpagerj extends MY_Controller {
 		// $data = 
 		// var_dump($data);exit;
 		// $data['title'] = 'Beranda';
-		echo "hello ha";
+		echo "<b>hello ha</b>";
 		// $data['data'] =$this->mpage->get_data();
 		// $this->load->view('page/index',$data);
 	}
