@@ -53,9 +53,18 @@ $route['default_controller'] = 'cpage';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 // project kotak amal
-$route['beranda'] = 'kotakamal/Cpage/index';
-$route['setor_kotak'] = 'kotakamal/Cpage/setor_kotak';
-$route['list_kotak'] = 'kotakamal/Cpage/list_kotak';
-$route['man_admin'] = 'kotakamal/Cpage/man_admin';
-$route['man_menu'] = 'kotakamal/Cpage/man_menu';
+// $route['beranda'] = 'kotakamal/Cpage/index';
+// $route['setor_kotak'] = 'kotakamal/Cpage/setor_kotak';
+// $route['list_kotak'] = 'kotakamal/Cpage/list_kotak';
+// $route['man_admin'] = 'kotakamal/Cpage/man_admin';
+// $route['man_menu'] = 'kotakamal/Cpage/man_menu';
+
+// project slipgaji
+
+$route['beranda'] = 'slipgaji/Cpage/index';
+$route['setor_kotak'] = 'slipgaji/Cpage/setor_kotak';
+$route['list_kotak'] = 'slipgaji/Cpage/list_kotak';
+$route['man_admin'] = 'slipgaji/Cpage/man_admin';
+$route['man_menu'] = 'slipgaji/Cpage/man_menu';
+
 
