@@ -14,16 +14,16 @@
                         </a>
                     </li>
 					<li>
-                       <a class="<?php if($title=='List Kotak'){ echo 'active';}else{echo '';}?>" href="<?php echo site_url('list_kotak'); ?>">
+                       <a class="<?php if($title=='Slip Karyawan'){ echo 'active';}else{echo '';}?>" href="<?php echo site_url('slip_karyawan'); ?>">
                             <i class="sidebar-item-icon fa fa-sitemap"></i>
-							<span class="nav-label">List Kotak</span>
+							<span class="nav-label">Slip Karyawan</span>
                         </a>
 						
                     </li>
 					<li>
-                       <a class="<?php if($title=='Setor Kotak'){ echo 'active';}else{echo '';}?>" href="<?php echo site_url('setor_kotak'); ?>">
+                       <a class="<?php if($title=='Slip Perorangan'){ echo 'active';}else{echo '';}?>" href="<?php echo site_url('slip_perorangan'); ?>">
                             <i class="sidebar-item-icon fa fa-sitemap"></i>
-							<span class="nav-label">Setor Kotak</span>
+							<span class="nav-label">Slip Perorangan</span>
                         </a>
                     </li>
 					<li>

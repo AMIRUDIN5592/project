@@ -29,21 +29,19 @@ class Cpage extends MY_Controller {
 		$data['data'] =$this->mpage->get_data();
 		$this->load->view('page/man_admin',$data);
 	}
-	function man_menu()
-	{
-		// echo "ada";exit;
+	function man_menu(){
 		$data['title'] = 'Manajemen Menu';
 		$data['data'] =$this->mpage->get_data();
 		$this->load->view('page/man_menu',$data);
 	}
-	function setor_kotak(){
-		$data['title'] = 'Setor Kotak';
+	function list_slip_karyawan(){
+		$data['title'] = 'Slip Karyawan';
 		$data['data'] =$this->mpage->get_data();
-		$this->load->view('page/setor_kotak',$data);
+		$this->load->view('page/slip_karyawan',$data);
 	}
-	function list_kotak(){
-		$data['title'] = 'List Kotak';
+	function list_slip_perorangan(){
+		$data['title'] = 'Slip Perorangan';
 		$data['data'] =$this->mpage->get_data();
-		$this->load->view('page/list_kotak',$data);
+		$this->load->view('page/slip_perorangan',$data);
 	}
 }

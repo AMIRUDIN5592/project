@@ -62,8 +62,8 @@ $route['translate_uri_dashes'] = FALSE;
 // project slipgaji
 
 $route['beranda'] = 'slipgaji/Cpage/index';
-$route['setor_kotak'] = 'slipgaji/Cpage/setor_kotak';
-$route['list_kotak'] = 'slipgaji/Cpage/list_kotak';
+$route['slip_karyawan'] = 'slipgaji/Cpage/list_slip_karyawan';
+$route['slip_perorangan'] = 'slipgaji/Cpage/list_slip_perorangan';
 $route['man_admin'] = 'slipgaji/Cpage/man_admin';
 $route['man_menu'] = 'slipgaji/Cpage/man_menu';
 
