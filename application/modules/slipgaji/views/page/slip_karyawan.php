@@ -14,15 +14,7 @@
         <div class="content-wrapper">
             <!-- START PAGE CONTENT-->
 			<!-- START PAGE CONTENT-->
-            <div class="page-heading">
-                <h1 class="page-title">DataTables</h1>
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="index.html"><i class="la la-home font-20"></i></a>
-                    </li>
-                    <li class="breadcrumb-item">DataTables</li>
-                </ol>
-            </div>
+            
             <div class="page-content fade-in-up">
                 <div class="ibox">
                     <div class="ibox-head">
@@ -33,8 +25,8 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>NIK</th>
-                                    <th>Nama</th>
+                                    <th>Periode</th>
+                                    <th>Jml Karyawan</th>
                                     <th>Total Gaji Neto</th>
                                     <th>action</th>
                                 </tr>
@@ -48,7 +40,46 @@
                 </div>
                
             </div>
+			
             <!-- END PAGE CONTENT-->
+			<!-- modal detail -->
+			<form>
+			  <div class="modal fade" id="Modal_Detail_Karyawan" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="modal-title" id="exampleModalLabel">Detail Slip Gaji</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+						 <table id="" class="table table-hover table-bordered table-striped" style="color:black;">
+							<thead>
+						   
+							<tr>
+							  <th>No</th>
+							  <th>NIK</th>
+							  <th>Nama Karyawan</th>
+							  <th>Gaji Neto</th>
+							  <th>Action</th>
+							</tr>
+						  </thead>
+						 <tbody id="show_data_pasangbaru">
+							
+						  </tbody>
+						</table> 
+						  
+					</div>
+					<div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					  <button type="button" type="submit" id="btn_update" class="btn btn-primary" data-dismiss="modal">Save</button>
+					</div>
+				  </div>
+				</div>
+			  </div>
+			  </form>
+			  <!-- end modal detail-->
             <?php $this->load->view('alat/footer');?>
         </div>
     </div>
@@ -69,40 +100,82 @@
         tampil_data_slip();
         function tampil_data_slip(){
             $.ajax({
-        type  : 'ajax',
-        url   : '<?php echo site_url('slipgaji/cdata/list_data_slip');?>',
+			type  : 'ajax',
+			url   : '<?php echo site_url('slipgaji/cdata/list_data_karyawan');?>',
+			
+			dataType : 'json',
+			async :false,
+			success : function(data){
+			  var html = '';
+			  var i;
+			   
+			  for(i=0; i<data.length; i++){
+					   // No = i;
+					   No = i+1;
+		 //               
+					  html += '<tr>'+
+					  
+					  '<td>'+No+'</td>'+
+					  '<td>'+data[i].periode+'</td>'+
+					  '<td>'+data[i].jml_karyawan+'</td>'+
+					  '<td>'+data[i].total_gaji_n+'</td>'+
+					  '<td style="text-align:right;">'+
+								'<a href="javascript:void(0);" class="btn btn-primary btn-sm item_detailslip" data-periode="'+data[i].periode+'" style="margin-right:1%;"><span class="fa fa-th fa-1"></span></a>'+
+					   '</td>'+           
+					   '</tr>';
+
+				}
+				$('#show_data_slip').html(html);
+				}
+
+		});
 		
-        dataType : 'json',
-        async :false,
-        success : function(data){
-          var html = '';
-          var i;
-		   
-          for(i=0; i<data.length; i++){
-                   // No = i;
-                   No = i+1;
-     //               
-				   
-                  html += '<tr>'+
-                  
-                  '<td>'+No+'</td>'+
-                  '<td>'+data[i].nik+'</td>'+
-                  '<td>'+data[i].nama+'</td>'+
-                  '<td>'+data[i].totalgajineto+'</td>'+
-                  '<td style="text-align:right;">'+
-                  			'<a href="javascript:void(0);" class="btn btn-primary btn-sm item_detailonline" data-id="' +data[i].id+'" data-name="'+data[i].name+'" data-value = "'+data[i].value+'" style="margin-right:1%;"><span class="fa fa-th fa-1"></span></a>'+
-                   '</td>'+           
-                   '</tr>';
-
-            }
-            $('#show_data_slip').html(html);
-            }
-
-            });
-    
     }
     });
+	function tampil_detail_data(periode){
+		
+		$.ajax({
+			type  : 'GET',
+			url   : '<?php echo site_url('slipgaji/cdata/list_data_detailkaryawan/?periode=');?>'+periode,
+			
+			dataType : 'json',
+			async :false,
+			success : function(data){
+			  var html = '';
+			  var i;
+			   
+			  for(i=0; i<data.length; i++){
+					   // No = i;
+					   No = i+1;
+		 //               
+					  html += '<tr>'+
+					  
+					  '<td>'+No+'</td>'+
+					  '<td>'+data[i].periode+'</td>'+
+					  '<td>'+data[i].jml_karyawan+'</td>'+
+					  '<td>'+data[i].total_gaji_n+'</td>'+
+					  '<td style="text-align:right;">'+
+								'<a href="javascript:void(0);" class="btn btn-primary btn-sm item_detailslip" data-periode="'+data[i].periode+'" style="margin-right:1%;"><span class="fa fa-th fa-1"></span></a>'+
+					   '</td>'+           
+					   '</tr>';
 
+				}
+				$('#show_data_slip').html(html);
+				}
+
+		});
+	}
+	$('#show_data_slip').on('click','.item_detailslip',function(){   
+            var periode     = $(this).data('periode');
+			// document.getElementById("gat_name").innerHTML = "Detail Gateway "+gat_name;
+            $('#Modal_Detail_Karyawan').modal('show');
+
+            tampil_detail_data(periode);
+                 
+            // $('[name="nameedit"]').val(name);
+            // $('[name="valueedit"]').val(value);
+            
+     });
     
     </script>
 	<script type="text/javascript">

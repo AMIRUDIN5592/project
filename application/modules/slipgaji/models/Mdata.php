@@ -13,9 +13,18 @@ class Mdata extends CI_Model {
      }
 
     function get_data_slip(){
-		$q = $this->db->query("select * from tbslipgaji order by date_format(periode,'%m-%Y') Desc");
+		$q = $this->db->query("select * from tbslipgaji order by concat(right(periode,4),'-',left(periode,2)) Desc");
 		return $q->result();
 	}
+	function get_data_karyawan(){
+		$q = $this->db->query("SELECT COUNT(nik) AS jml_karyawan,periode,SUM(`totalgajineto`) AS total_gaji_n FROM tbslipgaji GROUP BY concat(right(periode,4),'-',left(periode,2)) desc");
+		return $q->result();
+	}
+	function get_data_detail_slip($id){
+		$q = $this->db->query("select * from tbslipgaji where id='$id' order by concat(right(periode,4),'-',left(periode,2)) Desc");
+		return $q->result();
+	}
+	
 }
 
 ?>

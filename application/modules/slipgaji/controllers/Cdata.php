@@ -18,4 +18,19 @@ class Cdata extends MY_Controller {
 		$data =$this->mdata->get_data_slip();
 		echo json_encode($data);
 	}
+	function list_data_karyawan(){
+		// echo "ada";exit;
+		$data =$this->mdata->get_data_karyawan();
+		echo json_encode($data);
+	}
+	function list_data_detailkaryawan(){
+		$periode = $_GET['periode'];
+		echo $periode;exit;
+	}
+	function list_data_detailperorangan(){
+		$id = $_GET['id'];
+		$data =$this->mdata->get_data_detail_slip($id);
+		echo json_encode($data);
+	}
+	
 }
